@@ -1,0 +1,31 @@
+name: "petal"
+run-name: "CEDAR"
+"on":
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+jobs:
+  Umbra:
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    concurrency:
+      group: "island-${{ github.ref_name }}"
+      cancel-in-progress: true
+    runs-on: ubuntu-22.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.alder.outputs.page_url }}
+    steps:
+      - name: "WISTERIA"
+        uses: actions/checkout@v6
+      - name: "TERRACE"
+        uses: actions/configure-pages@v5
+      - name: "gorge"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: "MOUNTAIN"
+        id: alder
+        uses: actions/deploy-pages@v4
